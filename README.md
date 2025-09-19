@@ -1,7 +1,7 @@
 # Enterprise Big Data Pipeline
 
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/mr-uzairnaseer/habib_big_data)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/subi439/big_data)
 [![Docker](https://img.shields.io/badge/docker-ready-blue)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
@@ -65,8 +65,8 @@ docker-compose --version
 ### Deployment
 ```bash
 # 1. Clone the repository
-git clone https://github.com/mr-uzairnaseer/habib_big_data.git
-cd habib_big_data/ecommerce-data-pipeline
+git clone https://github.com/subi439/big_data.git
+cd big_data/ecommerce-data-pipeline
 
 # 2. Start all services (complete pipeline)
 docker-compose -f docker-compose.yml up -d
@@ -83,17 +83,6 @@ docker exec -it spark-master /opt/bitnami/spark/bin/spark-submit \
   --master local[*] /opt/bitnami/spark/container_big_data_pipeline.py
 ```
 
-### Service Access Points
-After deployment, access these services:
-
-| Service | URL | Credentials | Purpose |
-|---------|-----|-------------|---------|
-| Spark Master | http://localhost:8080 | - | Big data processing cluster |
-| Airflow UI | http://localhost:8081 | admin/admin | Workflow orchestration |
-| Kafka UI | http://localhost:8082 | - | Stream management |
-| HDFS NameNode | http://localhost:9870 | - | Distributed storage |
-| Streamlit Dashboard | http://localhost:8501 | - | Interactive analytics |
-| PowerBI Service API | http://localhost:5000 | - | BI integration endpoints |
 
 ## 🔧 Complete Linux Setup (New Machine)
 
@@ -145,8 +134,8 @@ sudo systemctl restart docker
 ### Step 3: Project Deployment
 ```bash
 # Clone and setup project
-git clone https://github.com/mr-uzairnaseer/habib_big_data.git
-cd habib_big_data/ecommerce-data-pipeline
+git clone https://github.com/subi439/big_data.git
+cd big_data/ecommerce-data-pipeline
 
 # Create necessary directories
 mkdir -p data/{input,processed,output,logs}
@@ -168,18 +157,13 @@ docker-compose up -d
 echo "Waiting for services to start..."
 sleep 300
 
-# Verify deployment
-docker ps
-curl -f http://localhost:8080 && echo "✅ Spark Master ready"
-curl -f http://localhost:8081 && echo "✅ Airflow ready"
-curl -f http://localhost:9870 && echo "✅ HDFS ready"
-```
+
 
 ### Step 4: Load Sample Data
 ```bash
 # Download sample dataset (if not included)
 wget -O data/input/sample_ecommerce.csv \
-  "https://github.com/mr-uzairnaseer/habib_big_data/raw/main/sample_data/Pakistan_Largest_Ecommerce_Dataset.csv"
+  "https://github.com/subi439/big_data/raw/main/sample_data/Pakistan_Largest_Ecommerce_Dataset.csv"
 
 # Copy dataset to Spark for processing
 docker cp data/input/sample_ecommerce.csv spark-master:/tmp/
@@ -337,8 +321,8 @@ LimitNPROC=1048576
 ### Development Setup
 ```bash
 # Fork the repository and clone
-git clone https://github.com/your-username/habib_big_data.git
-cd habib_big_data
+git clone https://github.com/subi439/big_data.git
+cd big_data
 
 # Create development environment
 python3 -m venv pipeline-env
